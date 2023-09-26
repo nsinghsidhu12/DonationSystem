@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcApp.Data;
 
@@ -10,9 +11,11 @@ using MvcApp.Data;
 namespace MvcApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230926044959_PaymentMethodSchemaData")]
+    partial class PaymentMethodSchemaData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
@@ -66,12 +69,12 @@ namespace MvcApp.Data.Migrations
                             AccountNo = 1,
                             City = "Edmonton",
                             Country = "Canada",
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(124),
+                            Created = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1355),
                             CreatedBy = "System",
                             Email = "connor@mcdavid.com",
                             FirstName = "Connor",
                             LastName = "McDavid",
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(126),
+                            Modified = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1356),
                             ModifiedBy = "System",
                             PostalCode = "T5J 0H6",
                             Street = "10220 104 Ave NW"
@@ -81,12 +84,12 @@ namespace MvcApp.Data.Migrations
                             AccountNo = 2,
                             City = "Ottawa",
                             Country = "Canada",
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(130),
+                            Created = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1363),
                             CreatedBy = "System",
                             Email = "thomas@chabot.com",
                             FirstName = "Thomas",
                             LastName = "Chabot",
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(130),
+                            Modified = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1363),
                             ModifiedBy = "System",
                             PostalCode = "K2V 1A5",
                             Street = "1000 Palladium Dr"
@@ -96,106 +99,15 @@ namespace MvcApp.Data.Migrations
                             AccountNo = 3,
                             City = "Winnipeg",
                             Country = "Canada",
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(132),
+                            Created = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1365),
                             CreatedBy = "System",
                             Email = "josh@morrisey.com",
                             FirstName = "Josh",
                             LastName = "Morrissey",
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(132),
+                            Modified = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1365),
                             ModifiedBy = "System",
                             PostalCode = "R3C 5S4",
                             Street = "300 Portage Ave"
-                        });
-                });
-
-            modelBuilder.Entity("ClassLibDb.Models.Donation", b =>
-                {
-                    b.Property<int>("TransId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AccountNo")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<float>("Amount")
-                        .HasColumnType("REAL");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Modified")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PaymentMethodId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TransactionTypeId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("TransId");
-
-                    b.HasIndex("AccountNo");
-
-                    b.HasIndex("PaymentMethodId");
-
-                    b.HasIndex("TransactionTypeId");
-
-                    b.ToTable("Donation", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            TransId = 1,
-                            AccountNo = 1,
-                            Amount = 100f,
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(234),
-                            CreatedBy = "System",
-                            Date = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(233),
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(234),
-                            ModifiedBy = "System",
-                            Notes = "Making a general donation using direct deposit",
-                            PaymentMethodId = 1,
-                            TransactionTypeId = 1
-                        },
-                        new
-                        {
-                            TransId = 2,
-                            AccountNo = 2,
-                            Amount = 200f,
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(238),
-                            CreatedBy = "System",
-                            Date = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(237),
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(238),
-                            ModifiedBy = "System",
-                            Notes = "Making a donation for food for homeless people using paypal",
-                            PaymentMethodId = 2,
-                            TransactionTypeId = 2
-                        },
-                        new
-                        {
-                            TransId = 3,
-                            AccountNo = 3,
-                            Amount = 300f,
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(240),
-                            CreatedBy = "System",
-                            Date = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(239),
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(240),
-                            ModifiedBy = "System",
-                            Notes = "Making a donation for upgrading the gym using a cheque",
-                            PaymentMethodId = 3,
-                            TransactionTypeId = 3
                         });
                 });
 
@@ -228,27 +140,27 @@ namespace MvcApp.Data.Migrations
                         new
                         {
                             PaymentMethodId = 1,
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(211),
+                            Created = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1412),
                             CreatedBy = "System",
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(212),
+                            Modified = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1413),
                             ModifiedBy = "System",
                             Name = "Direct Deposit"
                         },
                         new
                         {
                             PaymentMethodId = 2,
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(215),
+                            Created = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1416),
                             CreatedBy = "System",
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(216),
+                            Modified = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1416),
                             ModifiedBy = "System",
                             Name = "Paypal"
                         },
                         new
                         {
                             PaymentMethodId = 3,
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(217),
+                            Created = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1417),
                             CreatedBy = "System",
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(217),
+                            Modified = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1418),
                             ModifiedBy = "System",
                             Name = "Cheque"
                         });
@@ -286,30 +198,30 @@ namespace MvcApp.Data.Migrations
                         new
                         {
                             TransactionTypeId = 1,
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(189),
+                            Created = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1390),
                             CreatedBy = "System",
                             Description = "Donations made without any special purpose",
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(190),
+                            Modified = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1391),
                             ModifiedBy = "System",
                             Name = "General Donation"
                         },
                         new
                         {
                             TransactionTypeId = 2,
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(193),
+                            Created = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1394),
                             CreatedBy = "System",
                             Description = "Donations made for homeless people",
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(194),
+                            Modified = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1394),
                             ModifiedBy = "System",
                             Name = "Food for homeless"
                         },
                         new
                         {
                             TransactionTypeId = 3,
-                            Created = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(195),
+                            Created = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1395),
                             CreatedBy = "System",
                             Description = "Donations for the purpose of upgrading the gym",
-                            Modified = new DateTime(2023, 9, 26, 5, 49, 58, 660, DateTimeKind.Utc).AddTicks(195),
+                            Modified = new DateTime(2023, 9, 26, 4, 49, 58, 996, DateTimeKind.Utc).AddTicks(1396),
                             ModifiedBy = "System",
                             Name = "Repair of Gym"
                         });
@@ -511,33 +423,6 @@ namespace MvcApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ClassLibDb.Models.Donation", b =>
-                {
-                    b.HasOne("ClassLibDb.Models.Contact", "Contact")
-                        .WithMany("Donations")
-                        .HasForeignKey("AccountNo")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ClassLibDb.Models.PaymentMethod", "PaymentMethod")
-                        .WithMany("Donations")
-                        .HasForeignKey("PaymentMethodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ClassLibDb.Models.TransactionType", "TransactionType")
-                        .WithMany("Donations")
-                        .HasForeignKey("TransactionTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Contact");
-
-                    b.Navigation("PaymentMethod");
-
-                    b.Navigation("TransactionType");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -587,21 +472,6 @@ namespace MvcApp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("ClassLibDb.Models.Contact", b =>
-                {
-                    b.Navigation("Donations");
-                });
-
-            modelBuilder.Entity("ClassLibDb.Models.PaymentMethod", b =>
-                {
-                    b.Navigation("Donations");
-                });
-
-            modelBuilder.Entity("ClassLibDb.Models.TransactionType", b =>
-                {
-                    b.Navigation("Donations");
                 });
 #pragma warning restore 612, 618
         }
