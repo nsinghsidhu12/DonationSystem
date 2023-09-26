@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibDb", "ClassLibDb\ClassLibDb.csproj", "{5BA6F1E0-4DA0-41FA-B17D-F5468CDFE456}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp", "MvcApp\MvcApp.csproj", "{276B709C-B47C-4366-9754-CE927CF5B483}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BA6F1E0-4DA0-41FA-B17D-F5468CDFE456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BA6F1E0-4DA0-41FA-B17D-F5468CDFE456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BA6F1E0-4DA0-41FA-B17D-F5468CDFE456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BA6F1E0-4DA0-41FA-B17D-F5468CDFE456}.Release|Any CPU.Build.0 = Release|Any CPU
+		{276B709C-B47C-4366-9754-CE927CF5B483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{276B709C-B47C-4366-9754-CE927CF5B483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{276B709C-B47C-4366-9754-CE927CF5B483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{276B709C-B47C-4366-9754-CE927CF5B483}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
