@@ -2,7 +2,7 @@ using System.Reflection.Metadata.Ecma335;
 using ClassLibDb.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MvcApp.Data
+namespace ClassLibDb.Data
 {
     public static class SeedData
     {

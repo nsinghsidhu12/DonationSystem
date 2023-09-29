@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ClassLibDb.Models;
 
-namespace MvcApp.Data;
+namespace ClassLibDb.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {
