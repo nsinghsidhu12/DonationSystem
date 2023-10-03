@@ -12,6 +12,8 @@
 
 # MvcApp's SQLite3 database
 app.db
+app.db-shm
+app.db-wal
 
 # Development appsettings files
 appsettings.Development.json

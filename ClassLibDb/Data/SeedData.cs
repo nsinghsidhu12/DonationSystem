@@ -16,6 +16,8 @@ namespace ClassLibDb.Data
 
         public static List<Contact> GetContacts()
         {
+            var dateTimeUtc = DateTime.UtcNow;
+
             List<Contact> contacts = new() {
                 new Contact {
                     AccountNo = 1,
@@ -26,8 +28,8 @@ namespace ClassLibDb.Data
                     City = "Edmonton",
                     PostalCode = "T5J 0H6",
                     Country = "Canada",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
@@ -40,8 +42,8 @@ namespace ClassLibDb.Data
                     City = "Ottawa",
                     PostalCode = "K2V 1A5",
                     Country = "Canada",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
@@ -54,8 +56,8 @@ namespace ClassLibDb.Data
                     City = "Winnipeg",
                     PostalCode = "R3C 5S4",
                     Country = "Canada",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 }
@@ -66,13 +68,15 @@ namespace ClassLibDb.Data
 
         public static List<TransactionType> GetTransactionTypes()
         {
+            var dateTimeUtc = DateTime.UtcNow;
+
             List<TransactionType> transactionTypes = new() {
                 new TransactionType {
                     TransactionTypeId = 1,
                     Name = "General Donation",
                     Description = "Donations made without any special purpose",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
@@ -80,8 +84,8 @@ namespace ClassLibDb.Data
                     TransactionTypeId = 2,
                     Name = "Food for homeless",
                     Description = "Donations made for homeless people",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
@@ -89,8 +93,8 @@ namespace ClassLibDb.Data
                     TransactionTypeId = 3,
                     Name = "Repair of Gym",
                     Description = "Donations for the purpose of upgrading the gym",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 }
@@ -101,28 +105,30 @@ namespace ClassLibDb.Data
 
         public static List<PaymentMethod> GetPaymentMethods()
         {
+            var dateTimeUtc = DateTime.UtcNow;
+
             List<PaymentMethod> paymentMethods = new() {
                 new PaymentMethod {
                     PaymentMethodId = 1,
                     Name = "Direct Deposit",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
                 new PaymentMethod {
                     PaymentMethodId = 2,
                     Name = "Paypal",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
                 new PaymentMethod {
                     PaymentMethodId = 3,
                     Name = "Cheque",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 }
@@ -133,43 +139,45 @@ namespace ClassLibDb.Data
 
         public static List<Donation> GetDonations()
         {
+            var dateTimeUtc = DateTime.UtcNow;
+
             List<Donation> donations = new() {
                 new Donation {
                     TransId = 1,
-                    Date = DateTime.UtcNow,
+                    Date = dateTimeUtc,
                     AccountNo = 1,
                     TransactionTypeId = 1,
                     Amount = 100,
                     PaymentMethodId = 1,
                     Notes = "Making a general donation using direct deposit",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
                 new Donation {
                     TransId = 2,
-                    Date = DateTime.UtcNow,
+                    Date = dateTimeUtc,
                     AccountNo = 2,
                     TransactionTypeId = 2,
                     Amount = 200,
                     PaymentMethodId = 2,
                     Notes = "Making a donation for food for homeless people using paypal",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
                 new Donation {
                     TransId = 3,
-                    Date = DateTime.UtcNow,
+                    Date = dateTimeUtc,
                     AccountNo = 3,
                     TransactionTypeId = 3,
                     Amount = 300,
                     PaymentMethodId = 3,
                     Notes = "Making a donation for upgrading the gym using a cheque",
-                    Created = DateTime.UtcNow,
-                    Modified = DateTime.UtcNow,
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 }

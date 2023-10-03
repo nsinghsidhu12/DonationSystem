@@ -18,14 +18,14 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
+    {
+        base.OnModelCreating(builder);
 
-            builder.Entity<Contact>().ToTable("Contact");
-            builder.Entity<TransactionType>().ToTable("TransactionType");
-            builder.Entity<PaymentMethod>().ToTable("PaymentMethod");
-            builder.Entity<Donation>().ToTable("Donation");
+        builder.Entity<Contact>().ToTable("Contact");
+        builder.Entity<TransactionType>().ToTable("TransactionType");
+        builder.Entity<PaymentMethod>().ToTable("PaymentMethod");
+        builder.Entity<Donation>().ToTable("Donation");
 
-            builder.Seed();
-        }
+        builder.Seed();
+    }
 }
