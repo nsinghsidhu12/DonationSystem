@@ -10,91 +10,91 @@ using ClassLibDb.Models;
 
 namespace MvcApp.Controllers
 {
-    public class ContactController : Controller
+    public class TransactionTypeController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ContactController(ApplicationDbContext context)
+        public TransactionTypeController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Contact
+        // GET: TransactionType
         public async Task<IActionResult> Index()
         {
-            return _context.Contacts != null ?
-                        View(await _context.Contacts.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.Contacts'  is null.");
+            return _context.TransactionTypes != null ?
+                        View(await _context.TransactionTypes.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.TransactionTypes'  is null.");
         }
 
-        // GET: Contact/Details/5
+        // GET: TransactionType/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Contacts == null)
+            if (id == null || _context.TransactionTypes == null)
             {
                 return NotFound();
             }
 
-            var contact = await _context.Contacts
-                .FirstOrDefaultAsync(m => m.AccountNo == id);
-            if (contact == null)
+            var transactionType = await _context.TransactionTypes
+                .FirstOrDefaultAsync(m => m.TransactionTypeId == id);
+            if (transactionType == null)
             {
                 return NotFound();
             }
 
-            return View(contact);
+            return View(transactionType);
         }
 
-        // GET: Contact/Create
+        // GET: TransactionType/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Contact/Create
+        // POST: TransactionType/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,Email,Street,City,PostalCode,Country")] Contact contact)
+        public async Task<IActionResult> Create([Bind("Name,Description")] TransactionType transactionType)
         {
             if (ModelState.IsValid)
             {
                 var dateTimeUtc = DateTime.UtcNow;
-                contact.Created = dateTimeUtc;
-                contact.Modified = dateTimeUtc;
-                _context.Add(contact);
+                transactionType.Created = dateTimeUtc;
+                transactionType.Modified = dateTimeUtc;
+                _context.Add(transactionType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(contact);
+            return View(transactionType);
         }
 
-        // GET: Contact/Edit/5
+        // GET: TransactionType/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Contacts == null)
+            if (id == null || _context.TransactionTypes == null)
             {
                 return NotFound();
             }
 
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact == null)
+            var transactionType = await _context.TransactionTypes.FindAsync(id);
+            if (transactionType == null)
             {
                 return NotFound();
             }
-
-            return View(contact);
+            
+            return View(transactionType);
         }
 
-        // POST: Contact/Edit/5
+        // POST: TransactionType/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AccountNo,FirstName,LastName,Email,Street,City,PostalCode,Country,Created,Modified,CreatedBy,ModifiedBy")] Contact contact)
+        public async Task<IActionResult> Edit(int id, [Bind("TransactionTypeId,Name,Description,Created,Modified,CreatedBy,ModifiedBy")] TransactionType transactionType)
         {
-            if (id != contact.AccountNo)
+            if (id != transactionType.TransactionTypeId)
             {
                 return NotFound();
             }
@@ -103,13 +103,13 @@ namespace MvcApp.Controllers
             {
                 try
                 {
-                    contact.Modified = DateTime.UtcNow;
-                    _context.Update(contact);
+                    transactionType.Modified = DateTime.UtcNow;
+                    _context.Update(transactionType);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ContactExists(contact.AccountNo))
+                    if (!TransactionTypeExists(transactionType.TransactionTypeId))
                     {
                         return NotFound();
                     }
@@ -120,49 +120,49 @@ namespace MvcApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(contact);
+            return View(transactionType);
         }
 
-        // GET: Contact/Delete/5
+        // GET: TransactionType/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Contacts == null)
+            if (id == null || _context.TransactionTypes == null)
             {
                 return NotFound();
             }
 
-            var contact = await _context.Contacts
-                .FirstOrDefaultAsync(m => m.AccountNo == id);
-            if (contact == null)
+            var transactionType = await _context.TransactionTypes
+                .FirstOrDefaultAsync(m => m.TransactionTypeId == id);
+            if (transactionType == null)
             {
                 return NotFound();
             }
 
-            return View(contact);
+            return View(transactionType);
         }
 
-        // POST: Contact/Delete/5
+        // POST: TransactionType/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Contacts == null)
+            if (_context.TransactionTypes == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Contacts'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.TransactionTypes'  is null.");
             }
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact != null)
+            var transactionType = await _context.TransactionTypes.FindAsync(id);
+            if (transactionType != null)
             {
-                _context.Contacts.Remove(contact);
+                _context.TransactionTypes.Remove(transactionType);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ContactExists(int id)
+        private bool TransactionTypeExists(int id)
         {
-            return (_context.Contacts?.Any(e => e.AccountNo == id)).GetValueOrDefault();
+            return (_context.TransactionTypes?.Any(e => e.TransactionTypeId == id)).GetValueOrDefault();
         }
     }
 }
