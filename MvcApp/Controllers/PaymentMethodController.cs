@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ClassLibDb.Data;
 using ClassLibDb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MvcApp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PaymentMethodController : Controller
     {
         private readonly ApplicationDbContext _context;

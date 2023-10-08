@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ClassLibDb.Data;
 using ClassLibDb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MvcApp.Controllers
 {
+    [Authorize(Roles = "Admin,Finance")]
     public class DonationController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -48,6 +50,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: Donation/Create
+        [Authorize(Roles = "Admin,Finance")]
         public IActionResult Create()
         {
             ViewData["AccountNo"] = new SelectList(_context.Contacts, "AccountNo", "AccountNo");
@@ -61,6 +64,7 @@ namespace MvcApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Finance")]
         public async Task<IActionResult> Create([Bind("Date,AccountNo,TransactionTypeId,Amount,PaymentMethodId,Notes")] Donation donation)
         {
             if (ModelState.IsValid)
@@ -79,6 +83,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: Donation/Edit/5
+        [Authorize(Roles = "Admin,Finance")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Donations == null)
@@ -137,6 +142,8 @@ namespace MvcApp.Controllers
         }
 
         // GET: Donation/Delete/5
+        [Authorize(Roles = "Admin,Finance")]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Donations == null)

@@ -211,13 +211,13 @@ namespace ClassLibDb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d48f1596-aec2-4276-8dfa-1495b0d04913",
+                            Id = "d479b39e-7ff1-4cf2-9c91-dced1dedaf13",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "9bbee4dd-86e9-4666-8bb8-4055ad20d2b3",
+                            Id = "d8a6e6fb-04e8-41b4-bc8d-e2ef572ebd45",
                             Name = "Finance",
                             NormalizedName = "FINANCE"
                         });
@@ -312,35 +312,35 @@ namespace ClassLibDb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8c862689-7bd3-4aef-8549-27ae1030c6c0",
+                            Id = "f4a2131e-d6c2-4dbe-baf4-2a44998da264",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "491d29d5-83a5-4efe-a64d-770f50efaa30",
+                            ConcurrencyStamp = "8c5681fe-131f-4ab6-a085-99f32ff93b8a",
                             Email = "aa@aa.aa",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "AA@AA.AA",
                             NormalizedUserName = "AA@AA.AA",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFfS8fWSfiuATFiTWj4hbC6MYFSO1EsQZvYnApFf62QqIxBVfpQ8RC8oZn/EDgYLDQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHPL9Jav69yTUtulR91VmD5rzWz7FyN83GqTeBq7wDHYtvaUT7DJLbM1DL1BnY37RA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cf51809a-a272-4fb4-a14e-8659f35ca373",
+                            SecurityStamp = "c25d13d4-c7e5-4815-a5ca-f6c8a84db3da",
                             TwoFactorEnabled = false,
                             UserName = "aa@aa.aa"
                         },
                         new
                         {
-                            Id = "328ed5da-2bef-4ded-9128-8b3bea14d6a5",
+                            Id = "84e27cee-85fc-4617-baa0-09a819bed38b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e52cc55c-8007-4f47-a83b-aaf079ddee5f",
-                            Email = "mm@mm.mm",
+                            ConcurrencyStamp = "8b9dfe51-35bf-4840-b848-73a05bbe36ca",
+                            Email = "f@f.f",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "MM@MM.MM",
-                            NormalizedUserName = "MM@MM.MM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDgqOk2Fh0+3QZZSmVYpISf9wcSi0+JOTXZgqvoVqgxYuyQNcJ2BZa06HHyP4FWCcA==",
+                            NormalizedEmail = "F@F.F",
+                            NormalizedUserName = "F@F.F",
+                            PasswordHash = "AQAAAAIAAYagAAAAELUMAR/v1VCl4FypWe+uSiunwM6TyDlqPmDnm0gqMMTlwZq5IzB4AOXJKBI8wpo3SQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ddae0a31-8ee7-4dc3-bdf3-2156961e1fa0",
+                            SecurityStamp = "aa541cdb-daec-4a6a-927b-6e2fd6c9e0dc",
                             TwoFactorEnabled = false,
-                            UserName = "mm@mm.mm"
+                            UserName = "f@f.f"
                         });
                 });
 
@@ -406,13 +406,13 @@ namespace ClassLibDb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "8c862689-7bd3-4aef-8549-27ae1030c6c0",
-                            RoleId = "d48f1596-aec2-4276-8dfa-1495b0d04913"
+                            UserId = "f4a2131e-d6c2-4dbe-baf4-2a44998da264",
+                            RoleId = "d479b39e-7ff1-4cf2-9c91-dced1dedaf13"
                         },
                         new
                         {
-                            UserId = "328ed5da-2bef-4ded-9128-8b3bea14d6a5",
-                            RoleId = "9bbee4dd-86e9-4666-8bb8-4055ad20d2b3"
+                            UserId = "84e27cee-85fc-4617-baa0-09a819bed38b",
+                            RoleId = "d8a6e6fb-04e8-41b4-bc8d-e2ef572ebd45"
                         });
                 });
 
