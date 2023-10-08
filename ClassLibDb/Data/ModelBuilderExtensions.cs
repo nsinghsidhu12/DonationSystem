@@ -33,8 +33,8 @@ public static class ModelBuilderExtensions {
         adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, pwd);
 
         var finaceUser = new IdentityUser {
-            UserName = "mm@mm.mm",
-            Email = "mm@mm.mm",
+            UserName = "f@f.f",
+            Email = "f@f.f",
             EmailConfirmed = true,
         };
         finaceUser.NormalizedUserName = finaceUser.UserName.ToUpper();
