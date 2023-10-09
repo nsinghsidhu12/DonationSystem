@@ -1,10 +1,10 @@
-using System.Reflection.Metadata.Ecma335;
 using ClassLibDb.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibDb.Data
 {
-    public static class SeedData
+    public static class ModelBuildExtensions
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
@@ -12,6 +12,13 @@ namespace ClassLibDb.Data
             modelBuilder.Entity<TransactionType>().HasData(GetTransactionTypes());
             modelBuilder.Entity<PaymentMethod>().HasData(GetPaymentMethods());
             modelBuilder.Entity<Donation>().HasData(GetDonations());
+
+            var rolesList = GetRoles();
+            var usersList = GetUsers();
+
+            modelBuilder.Entity<IdentityRole>().HasData(rolesList);
+            modelBuilder.Entity<IdentityUser>().HasData(usersList);
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(GetUserRoles(rolesList, usersList));
         }
 
         public static List<Contact> GetContacts()
@@ -184,6 +191,77 @@ namespace ClassLibDb.Data
             };
 
             return donations;
+        }
+
+        public static List<IdentityRole> GetRoles()
+        {
+            // Seed Roles
+            var adminRole = new IdentityRole("Admin");
+            adminRole.NormalizedName = adminRole.Name!.ToUpper();
+
+            var financeRole = new IdentityRole("Finance");
+            financeRole.NormalizedName = financeRole.Name!.ToUpper();
+
+            List<IdentityRole> roles = new() {
+                adminRole,
+                financeRole
+            };
+
+            return roles;
+        }
+
+        public static List<IdentityUser> GetUsers()
+        {
+            var pwd = "P@$$w0rd";
+            var passwordHasher = new PasswordHasher<IdentityUser>();
+
+            // Seed Users
+            var adminUser = new IdentityUser
+            {
+                UserName = "a@a.a",
+                Email = "a@a.a",
+                EmailConfirmed = true,
+            };
+
+            adminUser.NormalizedUserName = adminUser.UserName.ToUpper();
+            adminUser.NormalizedEmail = adminUser.Email.ToUpper();
+            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, pwd);
+
+            var financeUser = new IdentityUser
+            {
+                UserName = "f@f.f",
+                Email = "f@f.f",
+                EmailConfirmed = true,
+            };
+
+            financeUser.NormalizedUserName = financeUser.UserName.ToUpper();
+            financeUser.NormalizedEmail = financeUser.Email.ToUpper();
+            financeUser.PasswordHash = passwordHasher.HashPassword(financeUser, pwd);
+
+            List<IdentityUser> users = new List<IdentityUser>() {
+                adminUser,
+                financeUser,
+            };
+
+            return users;
+        }
+
+        public static List<IdentityUserRole<string>> GetUserRoles(List<IdentityRole> roles, List<IdentityUser> users)
+        {
+            // Seed FinanceRoles
+            List<IdentityUserRole<string>> userRoles = new List<IdentityUserRole<string>>
+            {
+                new() {
+                    UserId = users[0].Id,
+                    RoleId = roles.First(q => q.Name == "Admin").Id
+                },
+                new() {
+                    UserId = users[1].Id,
+                    RoleId = roles.First(q => q.Name == "Finance").Id
+                }
+            };
+
+            return userRoles;
         }
     }
 }

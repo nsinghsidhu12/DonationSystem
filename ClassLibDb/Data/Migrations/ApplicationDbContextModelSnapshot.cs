@@ -71,6 +71,53 @@ namespace ClassLibDb.Data.Migrations
                     b.HasKey("AccountNo");
 
                     b.ToTable("Contact", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            AccountNo = 1,
+                            City = "Edmonton",
+                            Country = "Canada",
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9052),
+                            CreatedBy = "System",
+                            Email = "connor@mcdavid.com",
+                            FirstName = "Connor",
+                            LastName = "McDavid",
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9052),
+                            ModifiedBy = "System",
+                            PostalCode = "T5J 0H6",
+                            Street = "10220 104 Ave NW"
+                        },
+                        new
+                        {
+                            AccountNo = 2,
+                            City = "Ottawa",
+                            Country = "Canada",
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9052),
+                            CreatedBy = "System",
+                            Email = "thomas@chabot.com",
+                            FirstName = "Thomas",
+                            LastName = "Chabot",
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9052),
+                            ModifiedBy = "System",
+                            PostalCode = "K2V 1A5",
+                            Street = "1000 Palladium Dr"
+                        },
+                        new
+                        {
+                            AccountNo = 3,
+                            City = "Winnipeg",
+                            Country = "Canada",
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9052),
+                            CreatedBy = "System",
+                            Email = "josh@morrisey.com",
+                            FirstName = "Josh",
+                            LastName = "Morrissey",
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9052),
+                            ModifiedBy = "System",
+                            PostalCode = "R3C 5S4",
+                            Street = "300 Portage Ave"
+                        });
                 });
 
             modelBuilder.Entity("ClassLibDb.Models.Donation", b =>
@@ -120,6 +167,50 @@ namespace ClassLibDb.Data.Migrations
                     b.HasIndex("TransactionTypeId");
 
                     b.ToTable("Donation", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            TransId = 1,
+                            AccountNo = 1,
+                            Amount = 100f,
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9116),
+                            CreatedBy = "System",
+                            Date = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9116),
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9116),
+                            ModifiedBy = "System",
+                            Notes = "Making a general donation using direct deposit",
+                            PaymentMethodId = 1,
+                            TransactionTypeId = 1
+                        },
+                        new
+                        {
+                            TransId = 2,
+                            AccountNo = 2,
+                            Amount = 200f,
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9116),
+                            CreatedBy = "System",
+                            Date = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9116),
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9116),
+                            ModifiedBy = "System",
+                            Notes = "Making a donation for food for homeless people using paypal",
+                            PaymentMethodId = 2,
+                            TransactionTypeId = 2
+                        },
+                        new
+                        {
+                            TransId = 3,
+                            AccountNo = 3,
+                            Amount = 300f,
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9116),
+                            CreatedBy = "System",
+                            Date = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9116),
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9116),
+                            ModifiedBy = "System",
+                            Notes = "Making a donation for upgrading the gym using a cheque",
+                            PaymentMethodId = 3,
+                            TransactionTypeId = 3
+                        });
                 });
 
             modelBuilder.Entity("ClassLibDb.Models.PaymentMethod", b =>
@@ -148,6 +239,35 @@ namespace ClassLibDb.Data.Migrations
                     b.HasKey("PaymentMethodId");
 
                     b.ToTable("PaymentMethod", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            PaymentMethodId = 1,
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9100),
+                            CreatedBy = "System",
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9100),
+                            ModifiedBy = "System",
+                            Name = "Direct Deposit"
+                        },
+                        new
+                        {
+                            PaymentMethodId = 2,
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9100),
+                            CreatedBy = "System",
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9100),
+                            ModifiedBy = "System",
+                            Name = "Paypal"
+                        },
+                        new
+                        {
+                            PaymentMethodId = 3,
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9100),
+                            CreatedBy = "System",
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9100),
+                            ModifiedBy = "System",
+                            Name = "Cheque"
+                        });
                 });
 
             modelBuilder.Entity("ClassLibDb.Models.TransactionType", b =>
@@ -181,6 +301,38 @@ namespace ClassLibDb.Data.Migrations
                     b.HasKey("TransactionTypeId");
 
                     b.ToTable("TransactionType", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            TransactionTypeId = 1,
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9082),
+                            CreatedBy = "System",
+                            Description = "Donations made without any special purpose",
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9082),
+                            ModifiedBy = "System",
+                            Name = "General Donation"
+                        },
+                        new
+                        {
+                            TransactionTypeId = 2,
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9082),
+                            CreatedBy = "System",
+                            Description = "Donations made for homeless people",
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9082),
+                            ModifiedBy = "System",
+                            Name = "Food for homeless"
+                        },
+                        new
+                        {
+                            TransactionTypeId = 3,
+                            Created = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9082),
+                            CreatedBy = "System",
+                            Description = "Donations for the purpose of upgrading the gym",
+                            Modified = new DateTime(2023, 10, 9, 0, 41, 57, 446, DateTimeKind.Utc).AddTicks(9082),
+                            ModifiedBy = "System",
+                            Name = "Repair of Gym"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -211,13 +363,13 @@ namespace ClassLibDb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d479b39e-7ff1-4cf2-9c91-dced1dedaf13",
+                            Id = "4f2d4eb5-4934-48a9-91ce-7792780a5cbf",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d8a6e6fb-04e8-41b4-bc8d-e2ef572ebd45",
+                            Id = "5040c923-ec78-4c3a-ab1e-165e12dbc613",
                             Name = "Finance",
                             NormalizedName = "FINANCE"
                         });
@@ -312,33 +464,33 @@ namespace ClassLibDb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f4a2131e-d6c2-4dbe-baf4-2a44998da264",
+                            Id = "6f2a4765-87cd-4e25-ae61-f6030881e45b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8c5681fe-131f-4ab6-a085-99f32ff93b8a",
-                            Email = "aa@aa.aa",
+                            ConcurrencyStamp = "44961515-d01a-45c7-a3cb-1d051d0bf4b5",
+                            Email = "a@a.a",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "AA@AA.AA",
-                            NormalizedUserName = "AA@AA.AA",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHPL9Jav69yTUtulR91VmD5rzWz7FyN83GqTeBq7wDHYtvaUT7DJLbM1DL1BnY37RA==",
+                            NormalizedEmail = "A@A.A",
+                            NormalizedUserName = "A@A.A",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJHgr9DNaN1IOwXcpSLwG/RBgaM3JAiqikVK/3i89xq/YP6dLOajtaqxQOUeOJGlMQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c25d13d4-c7e5-4815-a5ca-f6c8a84db3da",
+                            SecurityStamp = "e4b5a597-cfe5-4d91-b6ac-1fbd881ea394",
                             TwoFactorEnabled = false,
-                            UserName = "aa@aa.aa"
+                            UserName = "a@a.a"
                         },
                         new
                         {
-                            Id = "84e27cee-85fc-4617-baa0-09a819bed38b",
+                            Id = "a495ed76-bb38-40d5-adfc-46714db7113b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8b9dfe51-35bf-4840-b848-73a05bbe36ca",
+                            ConcurrencyStamp = "eb5dae46-38e2-47a1-adcb-12ea96c10bfc",
                             Email = "f@f.f",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "F@F.F",
                             NormalizedUserName = "F@F.F",
-                            PasswordHash = "AQAAAAIAAYagAAAAELUMAR/v1VCl4FypWe+uSiunwM6TyDlqPmDnm0gqMMTlwZq5IzB4AOXJKBI8wpo3SQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJS9o5lpbUapMULIw35+hTltxBYSjaxD+289RCL/G7Q70vW97mv1O14YW6a7w9Y78g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aa541cdb-daec-4a6a-927b-6e2fd6c9e0dc",
+                            SecurityStamp = "505ce4cb-0611-423b-827b-cd0037bfcf14",
                             TwoFactorEnabled = false,
                             UserName = "f@f.f"
                         });
@@ -406,13 +558,13 @@ namespace ClassLibDb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "f4a2131e-d6c2-4dbe-baf4-2a44998da264",
-                            RoleId = "d479b39e-7ff1-4cf2-9c91-dced1dedaf13"
+                            UserId = "6f2a4765-87cd-4e25-ae61-f6030881e45b",
+                            RoleId = "4f2d4eb5-4934-48a9-91ce-7792780a5cbf"
                         },
                         new
                         {
-                            UserId = "84e27cee-85fc-4617-baa0-09a819bed38b",
-                            RoleId = "d8a6e6fb-04e8-41b4-bc8d-e2ef572ebd45"
+                            UserId = "a495ed76-bb38-40d5-adfc-46714db7113b",
+                            RoleId = "5040c923-ec78-4c3a-ab1e-165e12dbc613"
                         });
                 });
 

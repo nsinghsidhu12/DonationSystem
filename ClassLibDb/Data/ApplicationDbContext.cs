@@ -26,6 +26,6 @@ public class ApplicationDbContext : IdentityDbContext
         builder.Entity<PaymentMethod>().ToTable("PaymentMethod");
         builder.Entity<Donation>().ToTable("Donation");
 
-        builder.SeedRoles();
+        builder.Seed();
     }
 }
