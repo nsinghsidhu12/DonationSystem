@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MvcApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class PaymentMethodController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,6 +21,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: PaymentMethod
+        [Authorize(Roles = "Admin, Finance")]
         public async Task<IActionResult> Index()
         {
               return _context.PaymentMethods != null ? 
@@ -30,6 +30,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: PaymentMethod/Details/5
+        [Authorize(Roles = "Admin, Finance")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.PaymentMethods == null)
@@ -48,6 +49,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: PaymentMethod/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +58,7 @@ namespace MvcApp.Controllers
         // POST: PaymentMethod/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name")] PaymentMethod paymentMethod)
@@ -65,6 +68,8 @@ namespace MvcApp.Controllers
                 var dateTimeUtc = DateTime.UtcNow;
                 paymentMethod.Created = dateTimeUtc;
                 paymentMethod.Modified = dateTimeUtc;
+                paymentMethod.CreatedBy = User.Identity!.Name;
+                paymentMethod.ModifiedBy = User.Identity!.Name;
                 _context.Add(paymentMethod);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -73,6 +78,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: PaymentMethod/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.PaymentMethods == null)
@@ -91,6 +97,7 @@ namespace MvcApp.Controllers
         // POST: PaymentMethod/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("PaymentMethodId,Name")] PaymentMethod paymentMethod)
@@ -104,7 +111,15 @@ namespace MvcApp.Controllers
             {
                 try
                 {
+                    var prevPaymentMethod = _context.PaymentMethods
+                        .Where(p => p.PaymentMethodId == id)
+                        .Select(p => new { p.Created, p.CreatedBy, p.ModifiedBy })
+                        .FirstOrDefault();
+
+                    paymentMethod.Created = prevPaymentMethod!.Created;
+                    paymentMethod.CreatedBy = prevPaymentMethod.CreatedBy;
                     paymentMethod.Modified = DateTime.UtcNow;
+                    paymentMethod.ModifiedBy = User.Identity!.Name;
                     _context.Update(paymentMethod);
                     await _context.SaveChangesAsync();
                 }
@@ -125,6 +140,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: PaymentMethod/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.PaymentMethods == null)
@@ -143,6 +159,7 @@ namespace MvcApp.Controllers
         }
 
         // POST: PaymentMethod/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

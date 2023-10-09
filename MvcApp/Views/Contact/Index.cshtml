@@ -67,9 +67,13 @@
                 @Html.DisplayFor(modelItem => item.Country)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AccountNo">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AccountNo">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AccountNo">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.AccountNo">Details</a>
+                @if (User.IsInRole("Admin")) {
+                    <span> | </span>
+                    <a asp-action="Edit" asp-route-id="@item.AccountNo">Edit</a> 
+                    <span> | </span>
+                    <a asp-action="Delete" asp-route-id="@item.AccountNo">Delete</a>
+                }
             </td>
         </tr>
 }

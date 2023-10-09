@@ -53,9 +53,9 @@ namespace MvcApp.Controllers
         [Authorize(Roles = "Admin,Finance")]
         public IActionResult Create()
         {
-            ViewData["AccountNo"] = new SelectList(_context.Contacts, "AccountNo", "AccountNo");
-            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodId");
-            ViewData["TransactionTypeId"] = new SelectList(_context.TransactionTypes, "TransactionTypeId", "TransactionTypeId");
+            ViewData["AccountNo"] = new SelectList(_context.Contacts, "AccountNo", "SelectText");
+            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "SelectText");
+            ViewData["TransactionTypeId"] = new SelectList(_context.TransactionTypes, "TransactionTypeId", "SelectText");
             return View();
         }
 
@@ -72,13 +72,15 @@ namespace MvcApp.Controllers
                 var dateTimeUtc = DateTime.UtcNow;
                 donation.Created = dateTimeUtc;
                 donation.Modified = dateTimeUtc;
+                donation.CreatedBy = User.Identity!.Name;
+                donation.ModifiedBy = User.Identity!.Name;
                 _context.Add(donation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AccountNo"] = new SelectList(_context.Contacts, "AccountNo", "AccountNo", donation.AccountNo);
-            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodId", donation.PaymentMethodId);
-            ViewData["TransactionTypeId"] = new SelectList(_context.TransactionTypes, "TransactionTypeId", "TransactionTypeId", donation.TransactionTypeId);
+            ViewData["AccountNo"] = new SelectList(_context.Contacts, "AccountNo", "SelectText", donation.AccountNo);
+            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "SelectText", donation.PaymentMethodId);
+            ViewData["TransactionTypeId"] = new SelectList(_context.TransactionTypes, "TransactionTypeId", "SelectText", donation.TransactionTypeId);
             return View(donation);
         }
 
@@ -96,9 +98,9 @@ namespace MvcApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["AccountNo"] = new SelectList(_context.Contacts, "AccountNo", "AccountNo", donation.AccountNo);
-            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodId", donation.PaymentMethodId);
-            ViewData["TransactionTypeId"] = new SelectList(_context.TransactionTypes, "TransactionTypeId", "TransactionTypeId", donation.TransactionTypeId);
+            ViewData["AccountNo"] = new SelectList(_context.Contacts, "AccountNo", "SelectText", donation.AccountNo);
+            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "SelectText", donation.PaymentMethodId);
+            ViewData["TransactionTypeId"] = new SelectList(_context.TransactionTypes, "TransactionTypeId", "SelectText", donation.TransactionTypeId);
             return View(donation);
         }
 
@@ -124,7 +126,9 @@ namespace MvcApp.Controllers
                         .FirstOrDefault();
 
                     donation.Created = prevDonation!.Created;
+                    donation.CreatedBy = prevDonation.CreatedBy;
                     donation.Modified = DateTime.UtcNow;
+                    donation.ModifiedBy = User.Identity!.Name;
                     _context.Update(donation);
                     await _context.SaveChangesAsync();
                 }
@@ -141,9 +145,9 @@ namespace MvcApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AccountNo"] = new SelectList(_context.Contacts, "AccountNo", "AccountNo", donation.AccountNo);
-            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodId", donation.PaymentMethodId);
-            ViewData["TransactionTypeId"] = new SelectList(_context.TransactionTypes, "TransactionTypeId", "TransactionTypeId", donation.TransactionTypeId);
+            ViewData["AccountNo"] = new SelectList(_context.Contacts, "AccountNo", "SelectText", donation.AccountNo);
+            ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "SelectText", donation.PaymentMethodId);
+            ViewData["TransactionTypeId"] = new SelectList(_context.TransactionTypes, "TransactionTypeId", "SelectText", donation.TransactionTypeId);
             return View(donation);
         }
 

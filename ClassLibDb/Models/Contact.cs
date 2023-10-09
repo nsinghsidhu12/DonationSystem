@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClassLibDb.Models
 {
@@ -47,5 +48,23 @@ namespace ClassLibDb.Models
         [Display(Name = "Modified By")]
         public string? ModifiedBy { get; set; }
         public List<Donation>? Donations { get; set; }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
+        [NotMapped]
+        public string SelectText
+        {
+            get
+            {
+                return $"{AccountNo}. {FullName}";
+            }
+        }
     }
 }

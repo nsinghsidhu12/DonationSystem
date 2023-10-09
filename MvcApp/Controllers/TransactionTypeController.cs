@@ -11,8 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MvcApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
-
     public class TransactionTypeController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +21,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: TransactionType
+        [Authorize(Roles = "Admin, Finance")]
         public async Task<IActionResult> Index()
         {
             return _context.TransactionTypes != null ?
@@ -31,6 +30,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: TransactionType/Details/5
+        [Authorize(Roles = "Admin, Finance")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.TransactionTypes == null)
@@ -49,6 +49,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: TransactionType/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -59,6 +60,7 @@ namespace MvcApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Name,Description")] TransactionType transactionType)
         {
             if (ModelState.IsValid)
@@ -66,6 +68,8 @@ namespace MvcApp.Controllers
                 var dateTimeUtc = DateTime.UtcNow;
                 transactionType.Created = dateTimeUtc;
                 transactionType.Modified = dateTimeUtc;
+                transactionType.CreatedBy = User.Identity!.Name;
+                transactionType.ModifiedBy = User.Identity!.Name;
                 _context.Add(transactionType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -74,6 +78,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: TransactionType/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.TransactionTypes == null)
@@ -93,6 +98,7 @@ namespace MvcApp.Controllers
         // POST: TransactionType/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("TransactionTypeId,Name,Description")] TransactionType transactionType)
@@ -112,7 +118,9 @@ namespace MvcApp.Controllers
                         .FirstOrDefault();
 
                     transactionType.Created = prevTransactionType!.Created;
+                    transactionType.CreatedBy = prevTransactionType.CreatedBy;
                     transactionType.Modified = DateTime.UtcNow;
+                    transactionType.ModifiedBy = User.Identity!.Name;
                     _context.Update(transactionType);
                     await _context.SaveChangesAsync();
                 }
@@ -133,6 +141,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: TransactionType/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.TransactionTypes == null)
@@ -151,6 +160,7 @@ namespace MvcApp.Controllers
         }
 
         // POST: TransactionType/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -13,14 +13,20 @@ namespace ClassLibDb.Models
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-        [Display(Name = "Account Number")]
+        [Required(ErrorMessage = "{0} is required.")]
+        [Display(Name = "Contact")]
         public int AccountNo { get; set; }
 
-        [Display(Name = "Transaction Type ID")]
+        [Required(ErrorMessage = "{0} is required.")]
+        [Display(Name = "Transaction Type")]
         public int TransactionTypeId { get; set; }
+
+        [Required(ErrorMessage = "{0} is required.")]
+        [DataType(DataType.Currency)]
         public float Amount { get; set; }
 
-        [Display(Name = "Payment Method ID")]
+        [Required(ErrorMessage = "{0} is required.")]
+        [Display(Name = "Payment Method")]
         public int PaymentMethodId { get; set; }
 
         [Required(ErrorMessage = "{0} is required.")]

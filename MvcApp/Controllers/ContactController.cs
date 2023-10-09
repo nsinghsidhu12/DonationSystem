@@ -11,8 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MvcApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
-
+    
     public class ContactController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,7 +21,9 @@ namespace MvcApp.Controllers
             _context = context;
         }
 
+        
         // GET: Contact
+        [Authorize(Roles = "Admin, Finance")]
         public async Task<IActionResult> Index()
         {
             return _context.Contacts != null ?
@@ -30,7 +31,9 @@ namespace MvcApp.Controllers
                         Problem("Entity set 'ApplicationDbContext.Contacts'  is null.");
         }
 
+        
         // GET: Contact/Details/5
+        [Authorize(Roles = "Admin, Finance")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Contacts == null)
@@ -48,7 +51,9 @@ namespace MvcApp.Controllers
             return View(contact);
         }
 
+        
         // GET: Contact/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -57,6 +62,7 @@ namespace MvcApp.Controllers
         // POST: Contact/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FirstName,LastName,Email,Street,City,PostalCode,Country")] Contact contact)
@@ -66,6 +72,8 @@ namespace MvcApp.Controllers
                 var dateTimeUtc = DateTime.UtcNow;
                 contact.Created = dateTimeUtc;
                 contact.Modified = dateTimeUtc;
+                contact.CreatedBy = User.Identity!.Name;
+                contact.ModifiedBy = User.Identity!.Name;
                 _context.Add(contact);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -74,6 +82,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: Contact/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Contacts == null)
@@ -93,6 +102,7 @@ namespace MvcApp.Controllers
         // POST: Contact/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AccountNo,FirstName,LastName,Email,Street,City,PostalCode,Country")] Contact contact)
@@ -110,9 +120,11 @@ namespace MvcApp.Controllers
                         .Where(c => c.AccountNo == id)
                         .Select(c => new { c.Created, c.CreatedBy, c.ModifiedBy })
                         .FirstOrDefault();
-
+                    
                     contact.Created = prevContact!.Created;
+                    contact.CreatedBy = prevContact.CreatedBy;
                     contact.Modified = DateTime.UtcNow;
+                    contact.ModifiedBy = User.Identity!.Name;
                     _context.Update(contact);
                     await _context.SaveChangesAsync();
                 }
@@ -133,6 +145,7 @@ namespace MvcApp.Controllers
         }
 
         // GET: Contact/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Contacts == null)
@@ -151,6 +164,7 @@ namespace MvcApp.Controllers
         }
 
         // POST: Contact/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -31,9 +31,13 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PaymentMethodId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PaymentMethodId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PaymentMethodId">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.PaymentMethodId">Details</a>
+                @if (User.IsInRole("Admin")) {
+                    <span> | </span>
+                    <a asp-action="Edit" asp-route-id="@item.PaymentMethodId">Edit</a> 
+                    <span> | </span>
+                    <a asp-action="Delete" asp-route-id="@item.PaymentMethodId">Delete</a>
+                }
             </td>
         </tr>
 }
