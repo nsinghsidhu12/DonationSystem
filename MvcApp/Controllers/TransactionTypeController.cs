@@ -95,7 +95,7 @@ namespace MvcApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TransactionTypeId,Name,Description,Created,Modified,CreatedBy,ModifiedBy")] TransactionType transactionType)
+        public async Task<IActionResult> Edit(int id, [Bind("TransactionTypeId,Name,Description")] TransactionType transactionType)
         {
             if (id != transactionType.TransactionTypeId)
             {
@@ -106,6 +106,12 @@ namespace MvcApp.Controllers
             {
                 try
                 {
+                    var prevTransactionType = _context.TransactionTypes
+                        .Where(t => t.TransactionTypeId == id)
+                        .Select(t => new { t.Created, t.CreatedBy, t.ModifiedBy })
+                        .FirstOrDefault();
+
+                    transactionType.Created = prevTransactionType!.Created;
                     transactionType.Modified = DateTime.UtcNow;
                     _context.Update(transactionType);
                     await _context.SaveChangesAsync();

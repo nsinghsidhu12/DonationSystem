@@ -93,7 +93,7 @@ namespace MvcApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PaymentMethodId,Name,Created,Modified,CreatedBy,ModifiedBy")] PaymentMethod paymentMethod)
+        public async Task<IActionResult> Edit(int id, [Bind("PaymentMethodId,Name")] PaymentMethod paymentMethod)
         {
             if (id != paymentMethod.PaymentMethodId)
             {

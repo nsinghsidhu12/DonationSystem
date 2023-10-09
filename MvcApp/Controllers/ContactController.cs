@@ -95,7 +95,7 @@ namespace MvcApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AccountNo,FirstName,LastName,Email,Street,City,PostalCode,Country,Created,Modified,CreatedBy,ModifiedBy")] Contact contact)
+        public async Task<IActionResult> Edit(int id, [Bind("AccountNo,FirstName,LastName,Email,Street,City,PostalCode,Country")] Contact contact)
         {
             if (id != contact.AccountNo)
             {
@@ -106,6 +106,12 @@ namespace MvcApp.Controllers
             {
                 try
                 {
+                    var prevContact = _context.Contacts
+                        .Where(c => c.AccountNo == id)
+                        .Select(c => new { c.Created, c.CreatedBy, c.ModifiedBy })
+                        .FirstOrDefault();
+
+                    contact.Created = prevContact!.Created;
                     contact.Modified = DateTime.UtcNow;
                     _context.Update(contact);
                     await _context.SaveChangesAsync();

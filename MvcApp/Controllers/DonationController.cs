@@ -107,7 +107,7 @@ namespace MvcApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TransId,Date,AccountNo,TransactionTypeId,Amount,PaymentMethodId,Notes,Created,Modified,CreatedBy,ModifiedBy")] Donation donation)
+        public async Task<IActionResult> Edit(int id, [Bind("TransId,Date,AccountNo,TransactionTypeId,Amount,PaymentMethodId,Notes")] Donation donation)
         {
             if (id != donation.TransId)
             {
@@ -118,6 +118,12 @@ namespace MvcApp.Controllers
             {
                 try
                 {
+                    var prevDonation = _context.Donations
+                        .Where(d => d.TransId == id)
+                        .Select(d => new { d.Created, d.CreatedBy, d.ModifiedBy })
+                        .FirstOrDefault();
+
+                    donation.Created = prevDonation!.Created;
                     donation.Modified = DateTime.UtcNow;
                     _context.Update(donation);
                     await _context.SaveChangesAsync();
