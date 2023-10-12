@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
-using ClassLibDb.Data; // Adjust the namespace based on your project structure
+using ClassLibDb.Data; 
 using ClassLibDb.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -59,17 +59,19 @@ public IActionResult YearlyReport()
         .Include(d => d.TransactionType)
         .Include(d => d.PaymentMethod)
         .Where(d => d.Date.Year == DateTime.Now.Year)
-        .GroupBy(d => new { d.Date.Year, d.Contact.AccountNo })  // Change here
+        .GroupBy(d => new { d.Date.Year, d.Contact.AccountNo })  
         .Select(group => new ReportViewModel
         {
-            Title = $"Yearly Report - {group.Key.Year} (Company ID: {group.Key.AccountNo})",
-            TotalAmount = (decimal)group.Sum(d => d.Amount),  // Explicit cast to decimal
+            Title = $"Yearly Report - {group.Key.Year})",
+            TotalAmount = (decimal)group.Sum(d => d.Amount),
+            DonorName = group.First().Contact.FullName,  
+            DonationYear = group.Key.Year,
             Donations = group.ToList()
         })
         .ToList();
-
-    return View("YearlyReport", yearlyDonations);
+    return View("YearlyReportView", yearlyDonations);
 }
+
 
 
 

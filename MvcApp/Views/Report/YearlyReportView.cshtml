@@ -1,0 +1,30 @@
+@model List<ReportViewModel>
+@using ClassLibDb.Models
+
+<h2>Yearly Donation Report</h2>
+
+<h3>@Model.FirstOrDefault()?.Title</h3>
+<p>Total Amount: @Model.Sum(r => r.TotalAmount).ToString("C")</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Donor Name</th>
+            <th>Donation Year</th>
+            <th>Total Donation Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var donationReport in Model)
+        {
+            @foreach (var donation in donationReport.Donations)
+            {
+                <tr>
+                    <td>@donation.Contact.FullName</td>
+                    <td>@donation.Date.Year</td>
+                    <td>@donation.Amount.ToString("C")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
