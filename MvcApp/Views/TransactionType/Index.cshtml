@@ -38,7 +38,7 @@
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.TransactionTypeId">Details</a>
-                @if (User.IsInRole("Admin")) {
+                @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin")) {
                     <span> | </span>
                     <a asp-action="Edit" asp-route-id="@item.TransactionTypeId">Edit</a> 
                     <span> | </span>

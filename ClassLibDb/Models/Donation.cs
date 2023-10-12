@@ -23,7 +23,7 @@ namespace ClassLibDb.Models
 
         [Required(ErrorMessage = "{0} is required.")]
         [DataType(DataType.Currency)]
-        public float Amount { get; set; }
+        public double Amount { get; set; }
 
         [Required(ErrorMessage = "{0} is required.")]
         [Display(Name = "Payment Method")]

@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using ClassLibDb.Data;
 using ClassLibDb.Models;
 using Microsoft.AspNetCore.Authorization;
+using ClassLibDb.ViewModels;
 
 namespace MvcApp.Controllers
 {
-    
+
     public class ContactController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,7 +22,7 @@ namespace MvcApp.Controllers
             _context = context;
         }
 
-        
+
         // GET: Contact
         [Authorize(Roles = "Admin, Finance")]
         public async Task<IActionResult> Index()
@@ -31,7 +32,7 @@ namespace MvcApp.Controllers
                         Problem("Entity set 'ApplicationDbContext.Contacts'  is null.");
         }
 
-        
+
         // GET: Contact/Details/5
         [Authorize(Roles = "Admin, Finance")]
         public async Task<IActionResult> Details(int? id)
@@ -51,7 +52,7 @@ namespace MvcApp.Controllers
             return View(contact);
         }
 
-        
+
         // GET: Contact/Create
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
@@ -120,7 +121,7 @@ namespace MvcApp.Controllers
                         .Where(c => c.AccountNo == id)
                         .Select(c => new { c.Created, c.CreatedBy, c.ModifiedBy })
                         .FirstOrDefault();
-                    
+
                     contact.Created = prevContact!.Created;
                     contact.CreatedBy = prevContact.CreatedBy;
                     contact.Modified = DateTime.UtcNow;
@@ -181,6 +182,44 @@ namespace MvcApp.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Contact/Receipt/5
+        [Authorize(Roles = "Admin, Finance")]
+        public async Task<IActionResult> Receipt(int? id)
+        {
+            if (id == null || _context.Contacts == null)
+            {
+                return NotFound();
+            }
+
+            var contact = await _context.Contacts.FindAsync(id);
+
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            // var donations = await _context.Donations.Where(d => d.AccountNo == id).ToListAsync();
+
+            var donations = await _context.Donations.Include(d => d.PaymentMethod).ToListAsync();
+
+            if (donations == null)
+            {
+                return NotFound();
+            }
+
+            var dateTimeUtc = DateTime.UtcNow;
+            var receipt = new Receipt
+            {
+                Contact = contact,
+                Donations = donations,
+                DateIssued = dateTimeUtc.ToShortDateString(),
+                Year = dateTimeUtc.Year.ToString(),
+                Total = donations.Sum(d => d.Amount)
+            };
+
+            return View(receipt);
         }
 
         private bool ContactExists(int id)

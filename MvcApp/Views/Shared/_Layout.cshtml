@@ -19,7 +19,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (User.Identity!.IsAuthenticated) {
+                        @if (User.Identity!.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Finance"))) {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contacts</a>
                             </li>
@@ -47,7 +47,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - Donation System - Noorarjun | Atsuki
+            &copy; 2023 - Donation System - Noorarjun & Atsuki
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
