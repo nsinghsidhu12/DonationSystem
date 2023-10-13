@@ -7,9 +7,10 @@
 <h1>Index</h1>
 
 <h4>Payment Method</h4>
+@if (User.Identity!.IsAuthenticated && User.IsInRole("Admin")) {
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+}
 
-
-<a asp-action="Create" class="btn btn-success">Create New</a>
 <hr>
 <div class="table-responsive">
     <table class="table table-hover table-striped">

@@ -5,52 +5,63 @@
 }
 
 <h1>Donation Tax Receipt</h1>
+<hr>
+<div class="text-center">
+    <h3>Donation System</h3>
+    <p>3700 Willingdon Ave, Burnaby, BC V5G 3H2</p>
+    <h5><em>Official donation receipt for income tax purposes</em></h5>
+</div>
 
-<h3>Donation System</h3>
-<p>3700 Willingdon Ave, Burnaby, BC V5G 3H2</p>
-<h5><em>Official donation receipt for income tax purposes</em></h5>
+<div class="text-end">
+    <p><strong>Receipt issued: </strong>@Html.DisplayFor(model => model.DateIssued)</p>
+    <p><strong>Location: </strong>Burnaby</p>
+</div>
+<div class="text-start">
+    <p><strong>Donated by: </strong>@Html.DisplayFor(model => model.Contact!.FullName)</p>
+    <p><strong>Address: </strong>@Html.DisplayFor(model => model.Contact!.Street), @Html.DisplayFor(model =>
+        model.Contact!.City), @Html.DisplayFor(model => model.Contact!.Country), @Html.DisplayFor(model =>
+        model.Contact!.PostalCode)</p>
+</div>
 
-<p><strong>Receipt issued: </strong>@Html.DisplayFor(model => model.DateIssued)</p>
-<p><strong>Location: </strong>Burnaby</p>
-<p><strong>Donated by: </strong>@Html.DisplayFor(model => model.Contact!.FullName)</p>
-<p><strong>Address: </strong>@Html.DisplayFor(model => model.Contact!.Street), @Html.DisplayFor(model =>
-    model.Contact!.City), @Html.DisplayFor(model => model.Contact!.Country), @Html.DisplayFor(model =>
-    model.Contact!.PostalCode)</p>
+<div class="text-start items-donation">
+    <p><strong>Total eligible amount of donations between January 1, @Html.DisplayFor(model => model.Year) and December
+            31,
+            @Html.DisplayFor(model => model.Year): </strong> @Html.DisplayFor(model => model.Total)</p>
+    <p><strong>Itemized donations received:</strong></p>
+</div>
 
-<p><strong>Total eligible amount of donations between January 1, @Html.DisplayFor(model => model.Year) and December 31,
-        @Html.DisplayFor(model => model.Year): </strong> @Html.DisplayFor(model => model.Total)</p>
-
-<p><strong>Itemized donations received:</strong></p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Transaction ID</th>
-            <th>Date</th>
-            <th>Payment Method</th>
-            <th>Notes</th>
-            <th>Amount</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Donations!) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentMethod.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Transaction ID</th>
+                <th>Date</th>
+                <th>Payment Method</th>
+                <th>Notes</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Donations!)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TransId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentMethod!.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

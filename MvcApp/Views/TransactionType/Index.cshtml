@@ -8,8 +8,10 @@
 
 <h4>Transaction Type</h4>
 
+@if (User.Identity!.IsAuthenticated && User.IsInRole("Admin")) {
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+}
 
-<a asp-action="Create" class="btn btn-success">Create New</a>
 
 <hr>
 
