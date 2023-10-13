@@ -20,3 +20,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+.form-group {
+  margin-top: 10px;
+}

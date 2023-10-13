@@ -68,7 +68,7 @@ namespace ClassLibDb.Data
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
-                
+
             };
 
             return contacts;
@@ -189,19 +189,19 @@ namespace ClassLibDb.Data
                     CreatedBy = "System",
                     ModifiedBy = "System"
                 },
-            new Donation {
-            TransId = 4,
-            Date = dateTimeUtc,
-            AccountNo = 1,  
-            TransactionTypeId = 1,
-            Amount = 150,  
-            PaymentMethodId = 2, 
-            Notes = "Additional donation from the same person",
-            Created = dateTimeUtc,
-            Modified = dateTimeUtc,
-            CreatedBy = "System",
-            ModifiedBy = "System"
-        },
+                new Donation {
+                    TransId = 4,
+                    Date = dateTimeUtc,
+                    AccountNo = 1,
+                    TransactionTypeId = 1,
+                    Amount = 150,
+                    PaymentMethodId = 2,
+                    Notes = "General donation using paypal",
+                    Created = dateTimeUtc,
+                    Modified = dateTimeUtc,
+                    CreatedBy = "System",
+                    ModifiedBy = "System"
+                },
             };
 
             return donations;

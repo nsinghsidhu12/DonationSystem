@@ -200,9 +200,10 @@ namespace MvcApp.Controllers
                 return NotFound();
             }
 
-            // var donations = await _context.Donations.Where(d => d.AccountNo == id).ToListAsync();
-
-            var donations = await _context.Donations.Include(d => d.PaymentMethod).ToListAsync();
+            var startDate = new DateTime(DateTime.UtcNow.Year, 1, 1);
+            var endDate = new DateTime(DateTime.UtcNow.Year, 12, 31);
+            var donations = await _context.Donations.Include(d => d.PaymentMethod)
+                .Where(d => d.Date >= startDate && d.Date <= endDate && (d.AccountNo == id)).ToListAsync();
 
             if (donations == null)
             {

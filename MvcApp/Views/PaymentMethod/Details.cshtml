@@ -1,13 +1,13 @@
 @model ClassLibDb.Models.PaymentMethod
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Payment Method Details";
 }
 
 <h1>Details</h1>
 
 <div>
-    <h4>PaymentMethod</h4>
+    <h4>Payment Method</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -49,6 +49,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.PaymentMethodId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.PaymentMethodId" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-primary">Back</a>
 </div>

@@ -1,45 +1,49 @@
 @model IEnumerable<ClassLibDb.Models.PaymentMethod>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Payment Method Index";
 }
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PaymentMethodId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentMethodId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.PaymentMethodId">Details</a>
-                @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin")) {
-                    <span> | </span>
-                    <a asp-action="Edit" asp-route-id="@item.PaymentMethodId">Edit</a> 
-                    <span> | </span>
-                    <a asp-action="Delete" asp-route-id="@item.PaymentMethodId">Delete</a>
-                }
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<h4>Payment Method</h4>
+
+
+<a asp-action="Create" class="btn btn-success">Create New</a>
+<hr>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentMethodId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentMethodId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.PaymentMethodId" class="btn btn-info btn-sm">Details</a>
+                        @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.PaymentMethodId" class="btn btn-warning btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.PaymentMethodId" class="btn btn-danger btn-sm">Delete</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
