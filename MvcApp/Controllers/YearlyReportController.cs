@@ -53,25 +53,21 @@ public class ReportController : Controller
 
 public IActionResult YearlyReport()
 {
-    // Group donations by year and company, and calculate total amount for each company
     var yearlyDonations = _context.Donations
         .Include(d => d.Contact)
-        .Include(d => d.TransactionType)
-        .Include(d => d.PaymentMethod)
         .Where(d => d.Date.Year == DateTime.Now.Year)
-        .GroupBy(d => new { d.Date.Year, d.Contact.AccountNo })  
+        .GroupBy(d => new { d.Date.Year, d.Contact.AccountNo })
         .Select(group => new ReportViewModel
         {
-            Title = $"Yearly Report - {group.Key.Year})",
+            Title = $"Yearly Report - {group.Key.Year}",
             TotalAmount = (decimal)group.Sum(d => d.Amount),
-            DonorName = group.First().Contact.FullName,  
-            DonationYear = group.Key.Year,
-            Donations = group.ToList()
+            Donations = group.ToList(),
+            ContactFullName = group.First().Contact.FullName
         })
         .ToList();
+
     return View("YearlyReportView", yearlyDonations);
 }
-
 
 
 
