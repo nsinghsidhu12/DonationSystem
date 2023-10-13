@@ -85,5 +85,9 @@
     </dl>
 </div>
 
-<a asp-action="Edit" asp-route-id="@Model?.AccountNo" class="btn btn-warning">Edit</a>
-<a asp-action="Index" class="btn btn-primary">Back</a>
+<div>
+    @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin")) {
+        <a asp-action="Edit" asp-route-id="@Model?.AccountNo" class="btn btn-warning">Edit</a>
+    }
+    <a asp-action="Index" class="btn btn-primary">Back</a>
+</div>
