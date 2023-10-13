@@ -6,32 +6,43 @@
     <button class="btn btn-primary" onclick="showYearToDateReport()">Year-To-Date Donation Report</button>
 </div>
 
+
 <div id="yearlyReport">
     <h2>Yearly Donation Report</h2>
+
+    <h3>Donations made to Zenith Non Profit</h3>
+    <p>Date: January 1, @DateTime.Now.Year until December 31, @DateTime.Now.Year</p>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Donor Name</th>
+                <th>Date</th>
                 <th>Total Donation Amount</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var donationReport in Model)
             {
-                <tr>
-                    <td>@donationReport.ContactFullName</td>
-                    <td>@donationReport.TotalAmount.ToString("C")</td>
-                </tr>
+                var donationsByContact = donationReport.Donations.GroupBy(d => d.AccountNo);
+                foreach (var donationGroup in donationsByContact)
+                {
+                    var donation = donationGroup.First();
+                    <tr>
+                        <td>@donationReport.ContactFullName</td>
+                        <td>@donation.Date.ToShortDateString()</td>
+                        <td>@donationGroup.Sum(d => d.Amount).ToString("C")</td>
+                    </tr>
+                }
             }
-                        <tr>
+            <tr>
                 <td><strong>Total</strong></td>
+                <td></td>
                 <td><strong>@Model.Sum(r => r.TotalAmount).ToString("C")</strong></td>
             </tr>
         </tbody>
     </table>
 </div>
-
 <div id="yearToDateReport" style="display:none">
     <h2>Year-To-Date Donation Report</h2>
 
