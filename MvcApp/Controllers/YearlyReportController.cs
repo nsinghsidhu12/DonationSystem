@@ -25,32 +25,7 @@ public class ReportController : Controller
     }
 
 
-    public IActionResult YearToDateReport()
-    {
-        // Get year-to-date donations
-		var yearToDateDonations = _context.Donations
-			.Include(d => d.Contact)
-			.Include(d => d.TransactionType)
-			.Include(d => d.PaymentMethod)
-        	.Where(d => d.Date.Year == DateTime.Now.Year && d.Date == DateTime.Now)
-			.ToList();
-
-
-        // Perform aggregation (e.g., sum of amounts)
-        decimal yearToDateTotal = yearToDateDonations.Sum(d => (decimal)d.Amount);
-
-        // Create a view model to hold the aggregated data
-        var viewModel = new ReportViewModel
-    {
-        Title = $"Year-to-Date Report ({DateTime.Now.ToShortDateString()})",
-        TotalAmount = yearToDateTotal,
-        Donations = yearToDateDonations
-    };
-
-
-        return View("ReportView", viewModel);
-    }
-
+ 
 public IActionResult YearlyReport()
 {
     var yearlyDonations = _context.Donations

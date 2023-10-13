@@ -49,5 +49,7 @@ namespace ClassLibDb.Models
 
         [ForeignKey("PaymentMethodId")]
         public PaymentMethod? PaymentMethod { get; set; }
+
+
     }
 }

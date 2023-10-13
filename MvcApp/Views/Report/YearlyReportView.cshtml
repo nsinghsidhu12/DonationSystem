@@ -1,25 +1,74 @@
 @model List<ReportViewModel>
 @using ClassLibDb.Models
 
-<h2>Yearly Donation Report</h2>
+<div>
+    <button class="btn btn-primary" onclick="showYearlyReport()">Yearly Donation Report</button>
+    <button class="btn btn-primary" onclick="showYearToDateReport()">Year-To-Date Donation Report</button>
+</div>
 
-<h3>@Model.FirstOrDefault()?.Title</h3>
-<p>Total Amount: @Model.Sum(r => r.TotalAmount).ToString("C")</p>
+<div id="yearlyReport">
+    <h2>Yearly Donation Report</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Donor Name</th>
-            <th>Total Donation Amount</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var donationReport in Model)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>@donationReport.ContactFullName</td>
-                <td>@donationReport.TotalAmount.ToString("C")</td>
+                <th>Donor Name</th>
+                <th>Total Donation Amount</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var donationReport in Model)
+            {
+                <tr>
+                    <td>@donationReport.ContactFullName</td>
+                    <td>@donationReport.TotalAmount.ToString("C")</td>
+                </tr>
+            }
+                        <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>@Model.Sum(r => r.TotalAmount).ToString("C")</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="yearToDateReport" style="display:none">
+    <h2>Year-To-Date Donation Report</h2>
+
+    <h3>Donations made to Zenith Non Profit</h3>
+    <p>Date: January 1, @DateTime.Now.Year until @DateTime.Now.ToString("MMMM d, yyyy")</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Donor Name</th>
+                <th>Total Donation Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var donationReport in Model)
+            {
+                <tr>
+                    <td>@donationReport.ContactFullName</td>
+                    <td>@donationReport.TotalAmount.ToString("C")</td>
+                </tr>
+            }
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>@Model.Sum(r => r.TotalAmount).ToString("C")</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function showYearlyReport() {
+        document.getElementById("yearlyReport").style.display = "block";
+        document.getElementById("yearToDateReport").style.display = "none";
+    }
+
+    function showYearToDateReport() {
+        document.getElementById("yearlyReport").style.display = "none";
+        document.getElementById("yearToDateReport").style.display = "block";
+    }
+</script>
