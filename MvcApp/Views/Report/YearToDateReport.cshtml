@@ -1,0 +1,35 @@
+@model List<Report>
+@using ClassLibDb.ViewModels
+
+
+<h1>Reports</h1>
+<div id="yearToDateReport">
+    <h2>Year-To-Date Donation Report</h2>
+
+    <h4>Donations made to Donation System</h4>
+    <p>Date: January 1, @DateTime.UtcNow.Year until @DateTime.UtcNow.ToString("MMMM d, yyyy")</p>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Donor Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var donationReport in Model.Where(r => r.DonationDate.Year == DateTime.UtcNow.Year))
+                {
+                    <tr>
+                        <td>@donationReport.ContactFullName</td>
+                        <td>@donationReport.TotalAmount.ToString("C")</td>
+                    </tr>
+                }
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>@Model.Where(r => r.DonationDate.Year == DateTime.UtcNow.Year).Sum(r => r.TotalAmount).ToString("C")</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

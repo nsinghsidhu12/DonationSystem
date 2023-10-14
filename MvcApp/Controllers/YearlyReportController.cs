@@ -26,24 +26,63 @@ namespace MvcApp.Controllers
             return View(donations);
         }
 
+public IActionResult YearlyReport(){
 
-
-        public IActionResult YearlyReport()
+    var yearlyDonations = _context.Donations
+        .GroupBy(d => d.Date.Year)
+        .Select(group => new Report
         {
-            var yearlyDonations = _context.Donations
-                .Include(d => d.Contact)
-                .Where(d => d.Date.Year == DateTime.UtcNow.Year)
-                .GroupBy(d => new { d.Date.Year, d.Contact.AccountNo })
-                .Select(group => new Report
-                {
-                    Title = $"Yearly Report - {group.Key.Year}",
-                    TotalAmount = (decimal)group.Sum(d => d.Amount),
-                    Donations = group.ToList(),
-                    ContactFullName = group.First().Contact.FullName
-                })
-                .ToList();
+            Title = $"Yearly Report - {group.Key}",
+            TotalAmount = (decimal)group.Sum(d => d.Amount),
+            Year = group.Key
+        })
+        .OrderByDescending(r => r.Year)
+        .ToList();
 
-            return View("YearlyReportView", yearlyDonations);
-        }
-    }
+    return View(yearlyDonations);
+
 }
+
+
+
+        
+public IActionResult YearToDateReport()
+{
+    // Group donations by year and calculate total amount for each year
+    // var yearlyDonations = _context.Donations
+    //     .Where(d => d.Date.Year == DateTime.UtcNow.Year)
+    //     .GroupBy(d => d.Date.Year)
+    //     .Select(group => new Report
+    //     {
+    //         Title = $"Yearly Report - {group.Key}",
+    //         TotalAmount = (decimal)group.Sum(d => d.Amount),
+    //         Year = group.Key
+    //     })
+    //     .OrderByDescending(r => r.Year)
+    //     .ToList();
+
+    // Year-To-Date Donation Report (from January 1 to now)
+    var yearToDateDonations = _context.Donations
+        .Include(d => d.Contact)
+        .Where(d => d.Date.Year == DateTime.UtcNow.Year && d.Date <= DateTime.UtcNow)
+        .GroupBy(d => d.Contact.AccountNo)
+        .Select(group => new Report
+        {
+            Title = $"Year-To-Date Report - {DateTime.UtcNow.Year}",
+            TotalAmount = (decimal)group.Sum(d => d.Amount),
+            Donations = group.ToList(),
+            ContactFullName = group.First().Contact.FullName,
+            DonationDate = group.First().Date
+        })
+        .ToList();
+
+    // var combinedReports = yearlyDonations.Concat(yearToDateDonations).ToList();
+
+    return View(yearToDateDonations);
+}
+}
+
+
+
+
+    }

@@ -9,5 +9,7 @@ namespace ClassLibDb.ViewModels
         public List<Donation>? Donations { get; set; }
         public string? ContactFullName { get; set; }
         public DateTime DonationDate { get; set; }
+        public int Year { get; set; }
+
     }
 }
