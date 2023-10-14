@@ -1,10 +1,15 @@
 @model List<Report>
 @using ClassLibDb.ViewModels
 
+@{
+    ViewData["Title"] = "Year-To-Date Report";
+}
 
-<h1>Reports</h1>
+<h1>Report</h1>
+<h4>Year-To-Date Donations</h4>
+<hr>
+
 <div id="yearToDateReport">
-    <h2>Year-To-Date Donation Report</h2>
 
     <h4>Donations made to Donation System</h4>
     <p>Date: January 1, @DateTime.UtcNow.Year until @DateTime.UtcNow.ToString("MMMM d, yyyy")</p>

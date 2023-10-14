@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ClassLibDb.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class newMigration : Migration
+    public partial class M1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -261,8 +261,8 @@ namespace ClassLibDb.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "65a3341b-6cae-4f9e-8619-6504547ad015", null, "Finance", "FINANCE" },
-                    { "90b7cc55-56a5-4d52-a0f6-c0e28d74b139", null, "Admin", "ADMIN" }
+                    { "945f0745-f8e1-4598-b295-555ac51f1dd3", null, "Admin", "ADMIN" },
+                    { "b68005ba-2157-4c09-a439-84c1d8a3bfa8", null, "Finance", "FINANCE" }
                 });
 
             migrationBuilder.InsertData(
@@ -270,8 +270,8 @@ namespace ClassLibDb.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "10d2fc53-5a37-41c9-81de-dad55942c8f7", 0, "8d0559d4-ae85-45e1-bd79-1a7b9f8ddc28", "f@f.f", true, false, null, "F@F.F", "F@F.F", "AQAAAAIAAYagAAAAEHmzgwqbAjSbT0/bF3RlORaGtH8TmykUbmR2BfAsQgkwSHQB2VupDITy+goO3/KpRg==", null, false, "c6c43b9b-6e68-4ec3-b2d5-64bbcf47c4e6", false, "f@f.f" },
-                    { "5d2878fc-6303-4c44-86ec-eba6a4137786", 0, "544115ca-b23d-4c71-ad96-f2cb7751255d", "a@a.a", true, false, null, "A@A.A", "A@A.A", "AQAAAAIAAYagAAAAEEHnOk6Va9A/l0+amd/LUnlDpI2Orqr9WBdp/t3iGYbbqWE+zcQN/XUW7Fke6A4kTQ==", null, false, "7eeb1c3a-ead0-43e0-ac9d-4e2a6426616d", false, "a@a.a" }
+                    { "2acc1944-002d-4e48-929c-26573ba8728b", 0, "8eb7bb19-98b8-4dd7-b860-be0e46727b77", "f@f.f", true, false, null, "F@F.F", "F@F.F", "AQAAAAIAAYagAAAAECz/GtwkEIlSPQDTSeQhVpMBoVAx8ibyQHVyuXXWu27xb5QNyd92fDv0hKa8ocUG7Q==", null, false, "1216fb31-ee04-44a2-a843-22637c08df63", false, "f@f.f" },
+                    { "96ee338d-bfc1-4b20-979f-12dc2d1cecae", 0, "2725da24-def2-45ad-a916-e627caccb00b", "a@a.a", true, false, null, "A@A.A", "A@A.A", "AQAAAAIAAYagAAAAEByrhKcMkepDEvN976+exHIgdjTOZPhcy0njJGc1C6QeJcjKGAMlsJtX0TcSqnieuA==", null, false, "e7e815d3-2bc1-4045-b5e8-e8804a69192b", false, "a@a.a" }
                 });
 
             migrationBuilder.InsertData(
@@ -279,9 +279,9 @@ namespace ClassLibDb.Data.Migrations
                 columns: new[] { "AccountNo", "City", "Country", "Created", "CreatedBy", "Email", "FirstName", "LastName", "Modified", "ModifiedBy", "PostalCode", "Street" },
                 values: new object[,]
                 {
-                    { 1, "Edmonton", "Canada", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520), "System", "connor@mcdavid.com", "Connor", "McDavid", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520), "System", "T5J 0H6", "10220 104 Ave NW" },
-                    { 2, "Ottawa", "Canada", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520), "System", "thomas@chabot.com", "Thomas", "Chabot", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520), "System", "K2V 1A5", "1000 Palladium Dr" },
-                    { 3, "Winnipeg", "Canada", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520), "System", "josh@morrisey.com", "Josh", "Morrissey", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520), "System", "R3C 5S4", "300 Portage Ave" }
+                    { 1, "Edmonton", "Canada", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104), "System", "connor@mcdavid.com", "Connor", "McDavid", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104), "System", "T5J 0H6", "10220 104 Ave NW" },
+                    { 2, "Ottawa", "Canada", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104), "System", "thomas@chabot.com", "Thomas", "Chabot", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104), "System", "K2V 1A5", "1000 Palladium Dr" },
+                    { 3, "Winnipeg", "Canada", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104), "System", "josh@morrisey.com", "Josh", "Morrissey", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104), "System", "R3C 5S4", "300 Portage Ave" }
                 });
 
             migrationBuilder.InsertData(
@@ -289,9 +289,9 @@ namespace ClassLibDb.Data.Migrations
                 columns: new[] { "PaymentMethodId", "Created", "CreatedBy", "Modified", "ModifiedBy", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570), "System", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570), "System", "Direct Deposit" },
-                    { 2, new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570), "System", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570), "System", "Paypal" },
-                    { 3, new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570), "System", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570), "System", "Cheque" }
+                    { 1, new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156), "System", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156), "System", "Direct Deposit" },
+                    { 2, new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156), "System", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156), "System", "Paypal" },
+                    { 3, new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156), "System", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156), "System", "Cheque" }
                 });
 
             migrationBuilder.InsertData(
@@ -299,9 +299,9 @@ namespace ClassLibDb.Data.Migrations
                 columns: new[] { "TransactionTypeId", "Created", "CreatedBy", "Description", "Modified", "ModifiedBy", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550), "System", "Donations made without any special purpose", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550), "System", "General Donation" },
-                    { 2, new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550), "System", "Donations made for homeless people", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550), "System", "Food for homeless" },
-                    { 3, new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550), "System", "Donations for the purpose of upgrading the gym", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550), "System", "Repair of Gym" }
+                    { 1, new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135), "System", "Donations made without any special purpose", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135), "System", "General Donation" },
+                    { 2, new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135), "System", "Donations made for homeless people", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135), "System", "Food for homeless" },
+                    { 3, new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135), "System", "Donations for the purpose of upgrading the gym", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135), "System", "Repair of Gym" }
                 });
 
             migrationBuilder.InsertData(
@@ -309,8 +309,8 @@ namespace ClassLibDb.Data.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "65a3341b-6cae-4f9e-8619-6504547ad015", "10d2fc53-5a37-41c9-81de-dad55942c8f7" },
-                    { "90b7cc55-56a5-4d52-a0f6-c0e28d74b139", "5d2878fc-6303-4c44-86ec-eba6a4137786" }
+                    { "b68005ba-2157-4c09-a439-84c1d8a3bfa8", "2acc1944-002d-4e48-929c-26573ba8728b" },
+                    { "945f0745-f8e1-4598-b295-555ac51f1dd3", "96ee338d-bfc1-4b20-979f-12dc2d1cecae" }
                 });
 
             migrationBuilder.InsertData(
@@ -318,9 +318,9 @@ namespace ClassLibDb.Data.Migrations
                 columns: new[] { "TransId", "AccountNo", "Amount", "Created", "CreatedBy", "Date", "Modified", "ModifiedBy", "Notes", "PaymentMethodId", "TransactionTypeId" },
                 values: new object[,]
                 {
-                    { 1, 1, 100.0, new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590), "System", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590), new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590), "System", "Making a general donation using direct deposit", 1, 1 },
-                    { 2, 2, 200.0, new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590), "System", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590), new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590), "System", "Making a donation for food for homeless people using paypal", 2, 2 },
-                    { 3, 3, 300.0, new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590), "System", new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590), new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590), "System", "Making a donation for upgrading the gym using a cheque", 3, 3 }
+                    { 1, 1, 100.0, new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175), "System", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175), new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175), "System", "Making a general donation using direct deposit", 1, 1 },
+                    { 2, 2, 200.0, new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175), "System", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175), new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175), "System", "Making a donation for food for homeless people using paypal", 2, 2 },
+                    { 3, 3, 300.0, new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175), "System", new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175), new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175), "System", "Making a donation for upgrading the gym using a cheque", 3, 3 }
                 });
 
             migrationBuilder.CreateIndex(

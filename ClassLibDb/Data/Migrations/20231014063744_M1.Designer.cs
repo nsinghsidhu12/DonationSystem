@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClassLibDb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231013203627_newMigration")]
-    partial class newMigration
+    [Migration("20231014063744_M1")]
+    partial class M1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,12 +81,12 @@ namespace ClassLibDb.Data.Migrations
                             AccountNo = 1,
                             City = "Edmonton",
                             Country = "Canada",
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104),
                             CreatedBy = "System",
                             Email = "connor@mcdavid.com",
                             FirstName = "Connor",
                             LastName = "McDavid",
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104),
                             ModifiedBy = "System",
                             PostalCode = "T5J 0H6",
                             Street = "10220 104 Ave NW"
@@ -96,12 +96,12 @@ namespace ClassLibDb.Data.Migrations
                             AccountNo = 2,
                             City = "Ottawa",
                             Country = "Canada",
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104),
                             CreatedBy = "System",
                             Email = "thomas@chabot.com",
                             FirstName = "Thomas",
                             LastName = "Chabot",
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104),
                             ModifiedBy = "System",
                             PostalCode = "K2V 1A5",
                             Street = "1000 Palladium Dr"
@@ -111,12 +111,12 @@ namespace ClassLibDb.Data.Migrations
                             AccountNo = 3,
                             City = "Winnipeg",
                             Country = "Canada",
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104),
                             CreatedBy = "System",
                             Email = "josh@morrisey.com",
                             FirstName = "Josh",
                             LastName = "Morrissey",
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6520),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4104),
                             ModifiedBy = "System",
                             PostalCode = "R3C 5S4",
                             Street = "300 Portage Ave"
@@ -177,10 +177,10 @@ namespace ClassLibDb.Data.Migrations
                             TransId = 1,
                             AccountNo = 1,
                             Amount = 100.0,
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175),
                             CreatedBy = "System",
-                            Date = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590),
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590),
+                            Date = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175),
                             ModifiedBy = "System",
                             Notes = "Making a general donation using direct deposit",
                             PaymentMethodId = 1,
@@ -191,10 +191,10 @@ namespace ClassLibDb.Data.Migrations
                             TransId = 2,
                             AccountNo = 2,
                             Amount = 200.0,
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175),
                             CreatedBy = "System",
-                            Date = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590),
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590),
+                            Date = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175),
                             ModifiedBy = "System",
                             Notes = "Making a donation for food for homeless people using paypal",
                             PaymentMethodId = 2,
@@ -205,10 +205,10 @@ namespace ClassLibDb.Data.Migrations
                             TransId = 3,
                             AccountNo = 3,
                             Amount = 300.0,
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175),
                             CreatedBy = "System",
-                            Date = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590),
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6590),
+                            Date = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4175),
                             ModifiedBy = "System",
                             Notes = "Making a donation for upgrading the gym using a cheque",
                             PaymentMethodId = 3,
@@ -247,27 +247,27 @@ namespace ClassLibDb.Data.Migrations
                         new
                         {
                             PaymentMethodId = 1,
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156),
                             CreatedBy = "System",
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156),
                             ModifiedBy = "System",
                             Name = "Direct Deposit"
                         },
                         new
                         {
                             PaymentMethodId = 2,
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156),
                             CreatedBy = "System",
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156),
                             ModifiedBy = "System",
                             Name = "Paypal"
                         },
                         new
                         {
                             PaymentMethodId = 3,
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156),
                             CreatedBy = "System",
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6570),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4156),
                             ModifiedBy = "System",
                             Name = "Cheque"
                         });
@@ -309,30 +309,30 @@ namespace ClassLibDb.Data.Migrations
                         new
                         {
                             TransactionTypeId = 1,
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135),
                             CreatedBy = "System",
                             Description = "Donations made without any special purpose",
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135),
                             ModifiedBy = "System",
                             Name = "General Donation"
                         },
                         new
                         {
                             TransactionTypeId = 2,
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135),
                             CreatedBy = "System",
                             Description = "Donations made for homeless people",
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135),
                             ModifiedBy = "System",
                             Name = "Food for homeless"
                         },
                         new
                         {
                             TransactionTypeId = 3,
-                            Created = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550),
+                            Created = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135),
                             CreatedBy = "System",
                             Description = "Donations for the purpose of upgrading the gym",
-                            Modified = new DateTime(2023, 10, 13, 20, 36, 26, 977, DateTimeKind.Utc).AddTicks(6550),
+                            Modified = new DateTime(2023, 10, 14, 6, 37, 44, 228, DateTimeKind.Utc).AddTicks(4135),
                             ModifiedBy = "System",
                             Name = "Repair of Gym"
                         });
@@ -366,13 +366,13 @@ namespace ClassLibDb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "90b7cc55-56a5-4d52-a0f6-c0e28d74b139",
+                            Id = "945f0745-f8e1-4598-b295-555ac51f1dd3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "65a3341b-6cae-4f9e-8619-6504547ad015",
+                            Id = "b68005ba-2157-4c09-a439-84c1d8a3bfa8",
                             Name = "Finance",
                             NormalizedName = "FINANCE"
                         });
@@ -467,33 +467,33 @@ namespace ClassLibDb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5d2878fc-6303-4c44-86ec-eba6a4137786",
+                            Id = "96ee338d-bfc1-4b20-979f-12dc2d1cecae",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "544115ca-b23d-4c71-ad96-f2cb7751255d",
+                            ConcurrencyStamp = "2725da24-def2-45ad-a916-e627caccb00b",
                             Email = "a@a.a",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "A@A.A",
                             NormalizedUserName = "A@A.A",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEHnOk6Va9A/l0+amd/LUnlDpI2Orqr9WBdp/t3iGYbbqWE+zcQN/XUW7Fke6A4kTQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEByrhKcMkepDEvN976+exHIgdjTOZPhcy0njJGc1C6QeJcjKGAMlsJtX0TcSqnieuA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7eeb1c3a-ead0-43e0-ac9d-4e2a6426616d",
+                            SecurityStamp = "e7e815d3-2bc1-4045-b5e8-e8804a69192b",
                             TwoFactorEnabled = false,
                             UserName = "a@a.a"
                         },
                         new
                         {
-                            Id = "10d2fc53-5a37-41c9-81de-dad55942c8f7",
+                            Id = "2acc1944-002d-4e48-929c-26573ba8728b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8d0559d4-ae85-45e1-bd79-1a7b9f8ddc28",
+                            ConcurrencyStamp = "8eb7bb19-98b8-4dd7-b860-be0e46727b77",
                             Email = "f@f.f",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "F@F.F",
                             NormalizedUserName = "F@F.F",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHmzgwqbAjSbT0/bF3RlORaGtH8TmykUbmR2BfAsQgkwSHQB2VupDITy+goO3/KpRg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECz/GtwkEIlSPQDTSeQhVpMBoVAx8ibyQHVyuXXWu27xb5QNyd92fDv0hKa8ocUG7Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c6c43b9b-6e68-4ec3-b2d5-64bbcf47c4e6",
+                            SecurityStamp = "1216fb31-ee04-44a2-a843-22637c08df63",
                             TwoFactorEnabled = false,
                             UserName = "f@f.f"
                         });
@@ -561,13 +561,13 @@ namespace ClassLibDb.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "5d2878fc-6303-4c44-86ec-eba6a4137786",
-                            RoleId = "90b7cc55-56a5-4d52-a0f6-c0e28d74b139"
+                            UserId = "96ee338d-bfc1-4b20-979f-12dc2d1cecae",
+                            RoleId = "945f0745-f8e1-4598-b295-555ac51f1dd3"
                         },
                         new
                         {
-                            UserId = "10d2fc53-5a37-41c9-81de-dad55942c8f7",
-                            RoleId = "65a3341b-6cae-4f9e-8619-6504547ad015"
+                            UserId = "2acc1944-002d-4e48-929c-26573ba8728b",
+                            RoleId = "b68005ba-2157-4c09-a439-84c1d8a3bfa8"
                         });
                 });
 
