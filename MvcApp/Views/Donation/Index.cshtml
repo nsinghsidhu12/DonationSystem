@@ -18,7 +18,16 @@
                     @Html.DisplayNameFor(model => model.TransId)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.AccountNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TransactionTypeId)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentMethodId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Amount)
@@ -37,7 +46,16 @@
                         @Html.DisplayFor(modelItem => item.TransId)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Contact!.SelectText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TransactionType!.SelectText)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentMethod!.SelectText)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Amount)
